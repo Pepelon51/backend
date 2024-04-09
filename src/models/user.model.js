@@ -98,6 +98,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    edad:{
+        type: Number,
+        required: true,
     }
 }, {
     timestamps: true

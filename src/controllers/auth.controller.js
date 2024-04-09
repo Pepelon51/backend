@@ -85,14 +85,26 @@ export const logout = (req, res) => {
 }
 
 export const profile = async (req, res) => {
-    const userFound = await User.findById(req.user._id)
+    const userFound = await User.findById(req.user.id)
  
-    if (!userFound) return res.status(200).json({ message: "Usuario no encontrado"});
+    if (!userFound) return res.status(400).json({message: "User not found"});
+    console.log(userFound);
     
     console.log(req.user);
     return res.json({
         id: userFound._id,
         correo: userFound.correo,
+        colonia: userFound.colonia,
+        tipo_sangre: userFound.tipo_sangre,
+        nombre: userFound.nombre,
+        ap: userFound.ap,
+        am: userFound.am,
+        transtornos_psicologicos: userFound.transtornos_psicologicos,
+        calle: userFound.calle,
+        lugar_nacimiento: userFound.lugar_nacimiento,
+        telefono: userFound.telefono,
+        peso: userFound.peso,
+        edad: userFound.edad,
     })
  
 }
